@@ -19,29 +19,65 @@ public class TicTacToeClass
 
 	public boolean isWinner( char p )
 	{
+		if(board[0][0] == p && board[0][1] == p && board[0][2] == p) {
+			return true;
+		}
+		if(board[1][0] == p && board[1][1] == p && board[1][2] == p) {
+			return true;
+		}
+		if(board[2][0] == p && board[2][1] == p && board[2][2] == p) {
+			return true;
+		}
+		if(board[0][0] == p && board[1][0] == p && board[2][0] == p) {
+			return true;
+		}
+		if(board[0][2] == p && board[1][2] == p && board[2][2] == p) {
+			return true;
+		}
+		if(board[0][1] == p && board[1][1] == p && board[2][1] == p) {
+			return true;
+		}
+		if(board[0][0] == p && board[1][1] == p && board[2][2] == p) {
+			return true;
+		}
+		if(board[0][2] == p && board[1][1] == p && board[2][0] == p) {
+			return true;
+		}
 		return false;
 	}
 
 	public boolean isFull()
 	{
+		if (turns == 9) {
+			return true;
+		}
+		
 		return false;
 	}
 
 	public boolean isCat()
 	{
+		if(isFull() && (!(isWinner('X')) && (!(isWinner('O')))))
+		{
+			return true;
+		}
 		return false;	
 	}
 
 	public boolean isValid( int r, int c )
 	{
 		if ( 0 <= r && r <= 2 && 0 <= c && c <= 2 )
+			{
 			return true;
+			}
+			
 		else
 			return false;
 	}
 
 	public int numTurns()
 	{
+		
 		return turns;
 	}
 
@@ -66,6 +102,16 @@ public class TicTacToeClass
 	// Modifiers
 	public void playMove( char p, int r, int c )
 	{
+				
+		if (playerAt(r,c) == board[r][c] && board[r][c] == ' ') {
+			board[r][c] = p;
+			turns += 1;
+			isWinner(p);
+			
+		}
+		
+		
+		
 	}
 
 }
